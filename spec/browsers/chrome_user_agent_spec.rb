@@ -354,3 +354,27 @@ describe "UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, 
     expect(@useragent.os).to eq("Linux x86_64")
   end
 end
+
+describe "Mozilla/5.0 (Linux; Android 12; SM-G998U Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/97.0.4692.98 Mobile Safari/537.36 EdgW/1.0" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Linux; Android 12; SM-G998U Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/97.0.4692.98 Mobile Safari/537.36 EdgW/1.0")
+  end
+
+  it_should_behave_like "Chrome browser"
+
+  it "should return '537.36' as its build" do
+    expect(@useragent.build).to eq("537.36")
+  end
+
+  it "should return '97.0.4692.98' as its version" do
+    expect(@useragent.version).to eq("97.0.4692.98")
+  end
+
+  it "should return '537.36' as its webkit version" do
+    expect(@useragent.webkit.version).to eq("537.36")
+  end
+
+  it "should return 'Android' as its platform" do
+    expect(@useragent.platform).to eq("Android")
+  end
+end

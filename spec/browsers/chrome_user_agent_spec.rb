@@ -140,6 +140,34 @@ describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KH
   end
 end
 
+describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/106.0.5249.103 Safari/537.36" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/106.0.5249.103 Safari/537.36")
+  end
+
+  it_should_behave_like "Chrome browser"
+
+  it "should return '537.36' as its build" do
+    expect(@useragent.build).to eq("537.36")
+  end
+
+  it "should return '106.0.5249.103' as its version" do
+    expect(@useragent.version).to eq("106.0.5249.103")
+  end
+
+  it "should return '537.36' as its webkit version" do
+    expect(@useragent.webkit.version).to eq("537.36")
+  end
+
+  it "should return 'Macintosh' as its platform" do
+    expect(@useragent.platform).to eq("Macintosh")
+  end
+
+  it "should return 'OS X 10.15.7' as its os" do
+    expect(@useragent.os).to eq("OS X 10.15.7")
+  end
+end
+
 describe "Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JOP40C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19" do
   before do
     @useragent = UserAgent.parse("Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JOP40C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19")

@@ -3,7 +3,7 @@ class UserAgent
     class Chrome < Base
       def self.extend?(agent)
         agent.detect { |useragent|
-          %w(Chrome CriOS).include?(useragent.product)
+          %w(Chrome HeadlessChrome CriOS).include?(useragent.product)
         }
       end
 
@@ -23,6 +23,8 @@ class UserAgent
       def version
         str = if detect_product("CriOs")
           crios.version
+        elsif detect_product("HeadlessChrome")
+          headlesschrome.version
         else
           chrome.version
         end

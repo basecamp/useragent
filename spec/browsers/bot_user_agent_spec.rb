@@ -39,3 +39,11 @@ describe "UserAgent: Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) A
 
   it { expect(@useragent).to be_bot}
 end
+
+describe "UserAgent: Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/5.0 (via ggpht.com GoogleImageProxy)" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/5.0 (via ggpht.com GoogleImageProxy)")
+  end
+
+  it { expect(@useragent).to be_bot }
+end

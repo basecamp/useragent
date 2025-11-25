@@ -82,6 +82,9 @@ class UserAgent
         # https://stackoverflow.com/questions/16403295/what-is-the-name-of-the-google-pagespeed-user-agent
         elsif detect_product("Chrome-Lighthouse")
           true
+        # Google Image Proxy adds "GoogleImageProxy" to the comment
+        elsif detect_comment_match(/GoogleImageProxy/i)
+          true
         elsif product = application.product
           product.include?('bot')
         else

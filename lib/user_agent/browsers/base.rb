@@ -85,6 +85,9 @@ class UserAgent
         # Google Image Proxy adds "GoogleImageProxy" to the comment
         elsif detect_comment_match(/GoogleImageProxy/i)
           true
+        # Facebot/Twitterbot
+        elsif detect_product("Facebot") || detect_product("Twitterbot")
+          true
         elsif product = application.product
           product.include?('bot')
         else
